@@ -1,13 +1,13 @@
 import numpy as np
-import scipy.io as scio
 from measure import *
 import arff
 from numpy.linalg import matrix_rank
+
+
 # yeast
-#'''
+'''
 data = scio.loadmat('./data/yeast.mat')
 # print(data)
-# 1500个样本
 X_train = np.array(data['Xapp'])
 Y_train = np.array(data['Yapp'])
 X_test = np.array(data['Xgen'])
@@ -45,7 +45,7 @@ file = (open('./data/birds.arff', 'r'))
 decoder = arff.ArffDecoder()
 draft = decoder.decode(file)
 file.close()
-data = numpy.array(draft['data'], dtype=numpy.float32)
+data = np.array(draft['data'], dtype=np.float32)
 X = data[:, 0: 260]
 Y = data[:, 260:]
 X_train = X[:595]
@@ -62,9 +62,9 @@ print('birds')
 #'''
 
 # CAL500
-'''
+#'''
 draft = arff.ArffDecoder().decode(open('./data/CAL500.arff', 'r'))
-data = numpy.array(draft['data'], dtype=numpy.float32)
+data = np.array(draft['data'], dtype=np.float32)
 X = data[:, : 68]
 Y = data[:, 68:]
 X_train = X[:462]
@@ -84,13 +84,13 @@ print('CAL500')
 # emotions
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/emotions.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=numpy.float32)
+data1 = np.array(draft1['data'], dtype=np.float32)
 X = data1[:, :72]
 Y = data1[:, 72:]
 X_train = data1[:510, :72]
 Y_train = data1[:510, 72:]
 draft2 = arff.ArffDecoder().decode(open('./data/emotions-test.arff', 'r'))
-data2 = numpy.array(draft2['data'], dtype=numpy.float32)
+data2 = np.array(draft2['data'], dtype=np.float32)
 X_test = data1[500:, :72]
 Y_test = data1[500:, 72:]
 num_train = X_train.shape[0]
@@ -105,11 +105,11 @@ print('emotions')
 # mediamill
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/mediamill-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=numpy.float32)
+data1 = np.array(draft1['data'], dtype=np.float32)
 X_train = data1[:, :120]
 Y_train = data1[:, 120:]
 draft2 = arff.ArffDecoder().decode(open('./data/mediamill-test.arff', 'r'))
-data2 = numpy.array(draft2['data'], dtype=numpy.float32)
+data2 = np.array(draft2['data'], dtype=np.float32)
 X_test = data2[:, :120]
 Y_test = data2[:, 120:]
 X = np.r_[X_train, X_test]
@@ -126,7 +126,7 @@ print('mediamill')
 # medical
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/medical.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=numpy.float32)
+data1 = np.array(draft1['data'], dtype=np.float32)
 X = data1[:, :1449]
 Y = data1[:, 1449:]
 
@@ -141,11 +141,11 @@ print('medical')
 # scene
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/scene-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=numpy.float32)
+data1 = np.array(draft1['data'], dtype=np.float32)
 X_train = data1[:, :294]
 Y_train = data1[:, 294:]
 draft2 = arff.ArffDecoder().decode(open('./data/scene-test.arff', 'r'))
-data2 = numpy.array(draft2['data'], dtype=numpy.float32)
+data2 = np.array(draft2['data'], dtype=np.float32)
 X_test = data2[:, :294]
 Y_test = data2[:, 294:]
 
@@ -164,7 +164,7 @@ print('scene')
 # delicious * 没法
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/delicious.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :500]
 Y = data1[:, 500:]
 #print(data1)
@@ -172,7 +172,7 @@ num_train = X.shape[0]
 num_feature = X.shape[1]
 num_label = Y.shape[1]
 print('delicious')
-scio.savemat('./data/matlabdata/delicious.mat',{'X':X, 'Y': Y} )
+#scio.savemat('./data/matlabdata/delicious.mat',{'X':X, 'Y': Y} )
 
 #'''
 
@@ -180,11 +180,11 @@ scio.savemat('./data/matlabdata/delicious.mat',{'X':X, 'Y': Y} )
 # enron *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/enron-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X_train = data1[:, :1001]
 Y_train = data1[:, 1001:]
 draft2 = arff.ArffDecoder().decode(open('./data/enron-test.arff', 'r'))
-data2 = numpy.array(draft1['data'], dtype=int)
+data2 = np.array(draft1['data'], dtype=int)
 X_test = data2[:, :1001]
 Y_test = data2[:, 1001:]
 
@@ -201,7 +201,7 @@ scio.savemat('./data/matlabdata/enron.mat',{'X':X, 'Y': Y} )
 # Corel5k *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/Corel5k.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :499]
 Y = data1[:, 499:]
 #print(data1)
@@ -216,7 +216,7 @@ print('corel5k')
 # tmc2007 *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/tmc2007.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :499]
 Y = data1[:, 499:]
 #print(data1)
@@ -231,11 +231,11 @@ scio.savemat('./data/matlabdata/tmc2007.mat',{'X':X, 'Y': Y} )
 # bibtex *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/bibtex-train.arff', 'r'))
-data1 = numpy.array(draft1['data'],dtype=int)
+data1 = np.array(draft1['data'],dtype=int)
 X_train = data1[:, :1836]
 Y_train = data1[:, 1836:]
 draft2 = arff.ArffDecoder().decode(open('./data/bibtex-test.arff', 'r'))
-data2 = numpy.array(draft1['data'],dtype=int)
+data2 = np.array(draft1['data'],dtype=int)
 X_test = data2[:, :1836]
 Y_test = data2[:, 1836:]
 
@@ -253,7 +253,7 @@ print('bibtex')
 # slashdot *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/SLASHDOT-F.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, 22:]
 Y = data1[:, :22]
 #print(data1)
@@ -269,7 +269,7 @@ scio.savemat('./data/matlabdata/slashdot.mat',{'X':X, 'Y': Y} )
 # language log *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/LLOG-F.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, 75:]
 Y = data1[:, :75]
 #print(data1)
@@ -284,7 +284,7 @@ print('language log')
 # Corel16k001 *
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/Corel16k001.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :500]
 Y = data1[:, 500:]
 #print(data1)
@@ -299,7 +299,7 @@ print('corel16k001')
 # flag
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/flags.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :22]
 Y = data1[:, 22:]
 #print(data1)
@@ -311,7 +311,7 @@ print('flag')
 #'''
 
 '''
-X = numpy.array([[1,1,1],[0,1,0],[0,0,1],[1,0,0],[0,1,0],[1,0,0],[1,1,1],[1,1,1],[1,1,1],
+X = np.array([[1,1,1],[0,1,0],[0,0,1],[1,0,0],[0,1,0],[1,0,0],[1,1,1],[1,1,1],[1,1,1],
                  [1,1,1],[0,1,0],[0,0,1],[1,0,0],[0,1,0],[1,0,0],[1,1,1],[1,1,1],[1,1,1],
                  [1,1,1],[0,1,0],[0,0,1],[1,0,0],[0,1,0],[1,0,0],[1,1,1],[1,1,1],[1,1,1],
                  [1,1,1],[0,1,0],[0,0,1],[1,0,0],[0,1,0],[1,0,0],[1,1,1],[1,1,1],[1,1,1]])
@@ -321,7 +321,7 @@ Y = X.copy()
 # eurlex-eurovoc
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/eurlex-eurovoc-descriptors/eurlex-ev-fold1-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :-3993]
 Y = data1[:, -3993:]
 #print(data1)
@@ -334,7 +334,7 @@ print('eurlex-eurovoc')
 # eurlex-eurovoc
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/eurlex-eurovoc-descriptors/eurlex-ev-fold1-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :-3993]
 Y = data1[:, -3993:]
 #print(data1)
@@ -347,7 +347,7 @@ print('eurlex-eurovoc')
 # eurlex-subject
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/eurlex-subject-matters/eurlex-sm-fold1-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :-201]
 Y = data1[:, -201:]
 #print(data1)
@@ -361,7 +361,7 @@ print('eurlex-subject')
 # eurlex-directory
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/eurlex-subject-matters/eurlex-sm-fold1-train.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :-412]
 Y = data1[:, -412:]
 #print(data1)
@@ -374,7 +374,7 @@ print('eurlex-directory')
 # bookmask
 '''
 draft1 = arff.ArffDecoder().decode(open('./data/bookmarks.arff', 'r'))
-data1 = numpy.array(draft1['data'], dtype=int)
+data1 = np.array(draft1['data'], dtype=int)
 X = data1[:, :-208]
 Y = data1[:, -208:]
 #print(data1)
@@ -387,5 +387,5 @@ print('bookmask')
 
 #print(Y.shape[1])
 #print(matrix_rank(Y))
-print(X.shape[0])
-np.random.seed(1)
+#print(X.shape[0])
+#np.random.seed(1)
