@@ -1,6 +1,7 @@
 import numpy as np
 import time
 import os
+from measure import *
 from dataload import *
 from sklearn import model_selection, preprocessing
 from sklearn.decomposition import PCA
