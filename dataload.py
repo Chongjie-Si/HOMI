@@ -6,6 +6,4 @@ draft = arff.ArffDecoder().decode(open('./data/CAL500.arff', 'r'))
 data = np.array(draft['data'], dtype=np.float32)
 X = data[:, : 68]
 Y = data[:, 68:]
-num_feature = X.shape[1]
-num_label = Y.shape[1]
 print('CAL500')

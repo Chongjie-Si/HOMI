@@ -1,5 +1,9 @@
 import numpy
 
+# Y: ground-truth label
+# P: prediction (one-hot)
+# O: outputs (real-valued)
+
 def subset_accuracy(Y, P, O):
     n = (Y.shape[0] + P.shape[0]) // 2
 
